@@ -1,6 +1,5 @@
 package ru.kata.spring.boot_security.demo.model;
 
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,9 +17,9 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String firstname;
+    private String firstName;
 
-    private String lastname;
+    private String lastName;
 
     private int age;
 
@@ -36,9 +35,9 @@ public class User implements UserDetails {
 
     public User() {}
 
-    public User(String firstname, String lastname, int age, String password) {
-        this.firstname = firstname;
-        this.lastname = lastname;
+    public User(String firstName, String lastName, int age, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.age = age;
         this.password = password;
     }
@@ -51,20 +50,20 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public int getAge() {
@@ -82,7 +81,8 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return firstname;
+        // Возвращаем firstName только если он используется как username
+        return firstName;
     }
 
     public void setPassword(String password) {
@@ -130,8 +130,8 @@ public class User implements UserDetails {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + firstname + '\'' +
-                ", surname='" + lastname + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", age=" + age +
                 ", password='" + password + '\'' +
                 '}';
